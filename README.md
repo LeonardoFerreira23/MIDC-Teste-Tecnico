@@ -55,3 +55,38 @@ Precisa de Python 3.12, Node 20 e Docker.
 
 ```bash
 docker run -d --name
+
+## O que não ficou pronto
+
+Comparando com os critérios de aceite do enunciado:
+
+| Item pedido | Situação |
+| ----------- | -------- |
+| Backend FastAPI | Pronto |
+| PostgreSQL com histórico por período | Pronto |
+| Documentação da API (`/docs`) | Pronto |
+| Frontend Angular | Não funciona |
+| Frontend React com Tailwind | Funcionando |
+| Docker Compose subindo os 4 serviços | Não feito |
+
+**React — painel.** Funcionando parcial em `http://localhost:5173`. Mostra o gráfico do departamento e algumas informações.
+
+**React — painel.** Mesmo caso. O código em `frontend-react/` tem os quatro
+cartões de resumo, o gráfico de barras por departamento (recharts), a tabela com
+nome, departamento, data e quantidade, e as telas de carregando, de erro e de
+lista vazia. Sobe em 5173 e abre em branco. O requisito "o React exibe dados
+reais da API em cartões, um gráfico e uma tabela" **não** está atendido.
+
+**Docker.** Não cheguei a escrever os Dockerfiles nem o `docker-compose.yml`. Não
+existe `docker compose up --build` funcionando neste repositório. O Postgres sobe
+por `docker run` e o backend roda direto na máquina, como está nas instruções de
+execução acima.
+
+**O que dá para validar hoje.** Subindo o banco e o backend, em
+`http://localhost:8080/docs`:
+
+- cadastrar um registro (POST /records)
+- cadastrar o mesmo funcionário em outra data e ver os dois coexistindo
+- tentar repetir a mesma data e receber 409
+- mandar quantidade negativa e receber 422
+- listar o histórico (GET /records) e ver os totais (GET /summary)
