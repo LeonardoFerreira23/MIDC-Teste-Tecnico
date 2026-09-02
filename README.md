@@ -55,6 +55,7 @@ Precisa de Python 3.12, Node 20 e Docker.
 
 ```bash
 docker run -d --name
+```
 
 ## O que não ficou pronto
 
